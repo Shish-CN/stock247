@@ -121,7 +121,11 @@ async function loadTop() {
 }
 
 function renderQuote(item) {
-  const changeClass = item.changePercent24h >= 0 ? "up" : "down";
+  const changeClass = Number.isFinite(item.changePercent24h)
+    ? item.changePercent24h >= 0
+      ? "up"
+      : "down"
+    : "";
   quoteResult.className = "quote-result";
   quoteResult.innerHTML = `
     <div class="quote-main">
