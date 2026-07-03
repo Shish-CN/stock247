@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>24/7 Stock Contract Board</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Kraken xStocks</p>
+          <h1>24/7 暗盘合约行情</h1>
+        </div>
+        <div class="status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="statusText">连接中</span>
+        </div>
+      </header>
+
+      <section class="market-board" aria-labelledby="topTitle">
+        <div class="section-head">
+          <div>
+            <h2 id="topTitle">最近 24 小时成交额 Top 10</h2>
+            <p id="lastUpdated">等待刷新</p>
+          </div>
+          <button id="refreshButton" class="ghost-button" type="button">刷新</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>代码</th>
+                <th>价格</th>
+                <th>24h</th>
+                <th>成交额</th>
+                <th>价差</th>
+                <th>合约</th>
+              </tr>
+            </thead>
+            <tbody id="topRows">
+              <tr>
+                <td colspan="6" class="empty">加载行情中</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="lookup" aria-labelledby="lookupTitle">
+        <div class="lookup-copy">
+          <p class="eyebrow">Symbol Lookup</p>
+          <h2 id="lookupTitle">单只股票</h2>
+        </div>
+
+        <form id="lookupForm" class="lookup-form">
+          <input
+            id="symbolInput"
+            autocomplete="off"
+            inputmode="latin"
+            maxlength="8"
+            placeholder="AAPL"
+            aria-label="股票代码"
+          />
+          <button type="submit">查询</button>
+        </form>
+
+        <div id="quoteResult" class="quote-result is-idle">
+          <span>等待查询</span>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
