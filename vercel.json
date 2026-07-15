@@ -5,7 +5,7 @@
   "installCommand": "",
   "outputDirectory": ".",
   "functions": {
-    "api/*.js": {
+    "api/*.mjs": {
       "maxDuration": 10
     }
   },
