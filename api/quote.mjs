@@ -1,16 +1,11 @@
-import { fetchTradeXyzMarkets, jsonResponse, normalizeSymbol } from "../lib/hyperliquid.js";
+import { fetchTradeXyzMarkets, jsonResponse, normalizeSymbol } from "../lib/hyperliquid.mjs";
 
 export default async function handler(request, response) {
-  if (request.method !== "GET") {
-    return jsonResponse(response, 405, { ok: false, error: "method_not_allowed" });
-  }
-
+  if (request.method !== "GET") return jsonResponse(response, 405, { ok: false, error: "method_not_allowed" });
   const url = new URL(request.url || "/api/quote", "https://stock247.local");
   const requestedSymbol = String(url.searchParams.get("symbol") || "").trim();
   const symbol = normalizeSymbol(requestedSymbol);
-  if (!symbol) {
-    return jsonResponse(response, 400, { ok: false, error: "invalid_symbol" });
-  }
+  if (!symbol) return jsonResponse(response, 400, { ok: false, error: "invalid_symbol" });
 
   try {
     const markets = await fetchTradeXyzMarkets();
@@ -22,12 +17,7 @@ export default async function handler(request, response) {
         requestedSymbol
       }, "s-maxage=10, stale-while-revalidate=30");
     }
-
-    return jsonResponse(response, 200, {
-      ok: true,
-      requestedSymbol,
-      item
-    }, "s-maxage=10, stale-while-revalidate=60");
+    return jsonResponse(response, 200, { ok: true, requestedSymbol, item }, "s-maxage=10, stale-while-revalidate=60");
   } catch (error) {
     return jsonResponse(response, 502, {
       ok: false,

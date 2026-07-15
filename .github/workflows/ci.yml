@@ -13,5 +13,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm test
-      - run: npm run build
+      - run: node --check client.js
+      - run: node --check api/health.mjs
+      - run: node --check api/markets.mjs
+      - run: node --check api/quote.mjs
+      - run: node --test test/hyperliquid.test.mjs
+      - run: test -f index.html && test -f styles.css && test -f favicon.svg
