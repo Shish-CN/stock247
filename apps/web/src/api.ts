@@ -8,7 +8,8 @@ import {
 } from "@stock247/shared";
 import { z } from "zod";
 
-const API_BASE = (import.meta.env.VITE_API_BASE_URL || "http://localhost:8787").replace(/\/$/, "");
+const configuredApiBase = import.meta.env.VITE_API_BASE_URL?.trim();
+const API_BASE = (configuredApiBase || (import.meta.env.DEV ? "http://localhost:8787" : "")).replace(/\/$/, "");
 
 async function getJson(path: string): Promise<unknown> {
   const response = await fetch(`${API_BASE}${path}`, { headers: { accept: "application/json" } });
