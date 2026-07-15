@@ -1,24 +1,13 @@
 {
   "name": "stock247",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "private": true,
-  "main": "api/index.ts",
-  "packageManager": "pnpm@10.13.1",
-  "scripts": {
-    "dev:web": "pnpm --filter @stock247/web dev",
-    "dev:api": "pnpm --filter @stock247/api dev",
-    "lint": "eslint .",
-    "typecheck": "pnpm -r typecheck",
-    "test": "pnpm -r test",
-    "build": "pnpm -r build",
-    "build:vercel": "pnpm --filter @stock247/web build"
+  "type": "module",
+  "engines": {
+    "node": ">=20"
   },
-  "devDependencies": {
-    "@eslint/js": "^9.30.0",
-    "@types/node": "^22.15.0",
-    "eslint": "^9.30.0",
-    "globals": "^16.3.0",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.35.0"
+  "scripts": {
+    "test": "node --test",
+    "build": "node scripts/build.mjs"
   }
 }

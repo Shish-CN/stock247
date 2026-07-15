@@ -1,16 +1,23 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "pnpm build:vercel",
-  "outputDirectory": "apps/web/dist",
-  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "public",
   "functions": {
-    "api/**/*.ts": {
-      "maxDuration": 15
+    "api/*.js": {
+      "maxDuration": 10
     }
   },
   "rewrites": [
     { "source": "/health", "destination": "/api/health" },
-    { "source": "/v1/:path*", "destination": "/api/v1/:path*" },
-    { "source": "/symbol/:path*", "destination": "/index.html" }
+    { "source": "/markets", "destination": "/api/markets" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
   ]
 }
