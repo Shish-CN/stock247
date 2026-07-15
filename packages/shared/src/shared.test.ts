@@ -30,7 +30,9 @@ describe("symbol normalization", () => {
 
 describe("comparison math", () => {
   it("calculates absolute and percentage differences", () => {
-    expect(calculateDifference(151, 150)).toEqual({ difference: 1, differencePercent: 2 / 3 });
+    const result = calculateDifference(151, 150);
+    expect(result.difference).toBe(1);
+    expect(result.differencePercent).toBeCloseTo(2 / 3, 12);
   });
 
   it("handles empty values", () => {
