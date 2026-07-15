@@ -8,7 +8,7 @@ import quoteHandler from "./api/quote.js";
 const staticFiles = new Map([
   ["/", ["./public/index.html", "text/html; charset=utf-8"]],
   ["/index.html", ["./public/index.html", "text/html; charset=utf-8"]],
-  ["/app.js", ["./public/app.js", "text/javascript; charset=utf-8"]],
+  ["/client.js", ["./public/client.js", "text/javascript; charset=utf-8"]],
   ["/styles.css", ["./public/styles.css", "text/css; charset=utf-8"]]
 ]);
 
