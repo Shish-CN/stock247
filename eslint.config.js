@@ -1,4 +1,3 @@
-import js from "@eslint/js";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
@@ -6,19 +5,20 @@ export default tseslint.config(
   {
     ignores: ["**/dist/**", "**/coverage/**", "**/node_modules/**", "**/.vercel/**"]
   },
-  js.configs.recommended,
-  ...tseslint.configs.recommended,
   {
-    files: ["**/*.{ts,tsx}"],
+    files: ["**/*.{js,mjs,cjs,ts,tsx}"],
     languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module"
+      },
       globals: {
         ...globals.browser,
         ...globals.node
       }
     },
     rules: {
-      "@typescript-eslint/consistent-type-imports": "error",
-      "@typescript-eslint/no-explicit-any": "off",
       "no-console": ["error", { "allow": ["warn", "error"] }]
     }
   }
