@@ -19,17 +19,5 @@ jobs:
       - run: pnpm install --no-frozen-lockfile
       - run: pnpm lint
       - run: pnpm typecheck
-      - name: Test
-        run: |
-          set +e
-          pnpm test > test.log 2>&1
-          status=$?
-          cat test.log
-          exit $status
-      - name: Upload test log
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-log
-          path: test.log
+      - run: pnpm test
       - run: pnpm build
