@@ -4,13 +4,13 @@
   "outputDirectory": "apps/web/dist",
   "framework": null,
   "functions": {
-    "api/index.ts": {
+    "api/**/*.ts": {
       "maxDuration": 15
     }
   },
   "rewrites": [
-    { "source": "/health", "destination": "/api" },
-    { "source": "/v1/:path*", "destination": "/api" },
+    { "source": "/health", "destination": "/api/health" },
+    { "source": "/v1/:path*", "destination": "/api/v1/:path*" },
     { "source": "/symbol/:path*", "destination": "/index.html" }
   ]
 }
