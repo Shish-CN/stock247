@@ -3,7 +3,7 @@ import { z } from "zod";
 const envSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   HYPERLIQUID_API_BASE: z.string().url().default("https://api.hyperliquid.xyz"),
-  STOCK_PROVIDER: z.enum(["finnhub", "mock", ""]).default(""),
+  STOCK_PROVIDER: z.enum(["finnhub", "alpha-vantage", "mock", ""]).default(""),
   STOCK_API_KEY: z.string().default(""),
   CORS_ORIGINS: z.string().default(""),
   CACHE_TTL_CHAIN_SECONDS: z.coerce.number().int().positive().default(10),
