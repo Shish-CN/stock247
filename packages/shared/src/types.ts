@@ -4,7 +4,7 @@ export type SymbolMapping = {
   contractSymbol: string;
   stockSymbol: string;
   aliases: string[];
-  companyName?: string;
+  companyName?: string | undefined;
   assetType: AssetType;
 };
 
@@ -36,7 +36,7 @@ export type StockQuote = {
 };
 
 export type MarketComparison = {
-  rank?: number;
+  rank?: number | undefined;
   symbol: string;
   companyName: string;
   contractSymbol: string | null;
@@ -56,7 +56,7 @@ export type MarketComparison = {
   stockMarketOpen: boolean | null;
   isStale: boolean;
   status: "complete" | "stock_only" | "contract_only" | "not_found";
-  warning?: string;
+  warning?: string | undefined;
 };
 
 export type TopMarketsResponse = {
