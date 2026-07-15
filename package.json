@@ -1,12 +1,14 @@
 {
   "name": "stock247",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "private": true,
   "type": "module",
+  "main": "index.js",
   "engines": {
-    "node": ">=20"
+    "node": "22.x"
   },
   "scripts": {
+    "start": "node index.js",
     "test": "node --test",
     "build": "node scripts/build.mjs"
   }
