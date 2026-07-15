@@ -18,18 +18,18 @@ jobs:
           node-version: 22
       - run: pnpm install --no-frozen-lockfile
       - run: pnpm lint
-      - name: Typecheck
+      - run: pnpm typecheck
+      - name: Test
         run: |
           set +e
-          pnpm typecheck > typecheck.log 2>&1
+          pnpm test > test.log 2>&1
           status=$?
-          cat typecheck.log
+          cat test.log
           exit $status
-      - name: Upload typecheck log
+      - name: Upload test log
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: typecheck-log
-          path: typecheck.log
-      - run: pnpm test
+          name: test-log
+          path: test.log
       - run: pnpm build
