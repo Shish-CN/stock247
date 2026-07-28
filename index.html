@@ -29,7 +29,7 @@
     <main class="container">
       <section class="controls" aria-label="行情控制">
         <label class="search-field">
-          <span>搜索合约</span>
+          <span>搜索全部合约</span>
           <input id="search-input" type="search" placeholder="例如 AAPL、NVDA、xyz:TSLA" autocomplete="off" />
         </label>
         <label class="select-field">
@@ -51,18 +51,19 @@
         <div class="section-heading">
           <div>
             <h2>热门合约</h2>
-            <p>默认按 24H 名义成交额排序，最多展示 20 个标的。</p>
+            <p>默认展示成交额 TOP20；输入代码后会搜索全部可用合约。手机端可横向滑动查看完整指标。</p>
           </div>
           <strong id="result-count">0 个合约</strong>
         </div>
 
-        <div class="table-wrap">
+        <div class="table-wrap" role="region" aria-label="行情表格，可横向滚动" tabindex="0">
           <table>
             <thead>
               <tr>
-                <th>#</th>
-                <th>合约</th>
+                <th class="sticky-rank">#</th>
+                <th class="sticky-symbol">合约</th>
                 <th>价格</th>
+                <th>24H 走势</th>
                 <th>24H 涨跌</th>
                 <th>24H 成交额</th>
                 <th>持仓量</th>
@@ -73,8 +74,6 @@
             <tbody id="market-table-body"></tbody>
           </table>
         </div>
-
-        <div id="market-cards" class="market-cards"></div>
       </section>
     </main>
 

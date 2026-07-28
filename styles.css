@@ -9,18 +9,12 @@
 body { margin: 0; min-width: 320px; }
 button, input, select { font: inherit; }
 
-.site-header {
-  background: linear-gradient(135deg, #0f172a 0%, #172554 55%, #1e3a8a 100%);
-  color: white;
-  padding: 42px 20px;
-}
-
+.site-header { background: linear-gradient(135deg, #0f172a 0%, #172554 55%, #1e3a8a 100%); color: white; padding: 42px 20px; }
 .header-inner, .container, footer p { max-width: 1240px; margin: 0 auto; }
 .header-inner { display: flex; justify-content: space-between; gap: 28px; align-items: center; }
 .eyebrow { margin: 0 0 8px; color: #93c5fd; font-size: 12px; font-weight: 800; letter-spacing: .22em; }
 h1 { margin: 0; font-size: clamp(30px, 5vw, 50px); letter-spacing: -.04em; }
 .subtitle { max-width: 700px; margin: 12px 0 0; color: #cbd5e1; line-height: 1.7; }
-
 .status-box { display: flex; align-items: center; gap: 12px; min-width: 180px; padding: 14px 16px; border: 1px solid rgba(255,255,255,.18); border-radius: 16px; background: rgba(255,255,255,.08); }
 .status-box strong, .status-box small { display: block; }
 .status-box small { margin-top: 3px; color: #cbd5e1; }
@@ -36,7 +30,6 @@ input:focus, select:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37
 .refresh-button { align-self: end; min-height: 43px; border: 0; border-radius: 11px; padding: 0 20px; background: #2563eb; color: white; font-weight: 800; cursor: pointer; }
 .refresh-button:hover { background: #1d4ed8; }
 .refresh-button:disabled { opacity: .55; cursor: wait; }
-
 .notice, .loading-panel { margin-top: 22px; padding: 20px; border-radius: 15px; }
 .notice { border: 1px solid #fecaca; background: #fef2f2; color: #b91c1c; }
 .loading-panel { border: 1px solid #dbeafe; background: #eff6ff; color: #1d4ed8; }
@@ -45,11 +38,11 @@ input:focus, select:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37
 .section-heading p { margin: 5px 0 0; color: #64748b; }
 .section-heading > strong { color: #475569; }
 
-.table-wrap { overflow-x: auto; border: 1px solid #e2e8f0; border-radius: 18px; background: white; box-shadow: 0 10px 35px rgba(15,23,42,.06); }
-table { width: 100%; border-collapse: collapse; min-width: 1000px; }
-th { padding: 13px 15px; background: #f8fafc; color: #64748b; text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
-td { padding: 16px 15px; border-top: 1px solid #f1f5f9; vertical-align: middle; }
-tbody tr:hover { background: #f8fafc; }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid #e2e8f0; border-radius: 18px; background: white; box-shadow: 0 10px 35px rgba(15,23,42,.06); }
+table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 1120px; }
+th { position: relative; z-index: 1; padding: 13px 15px; background: #f8fafc; color: #64748b; text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
+td { padding: 14px 15px; border-top: 1px solid #f1f5f9; vertical-align: middle; white-space: nowrap; background: white; }
+tbody tr:hover td { background: #f8fafc; }
 td strong, td small { display: block; }
 td small { margin-top: 4px; color: #94a3b8; font-size: 11px; }
 .rank { color: #94a3b8; font-variant-numeric: tabular-nums; }
@@ -58,21 +51,14 @@ td small { margin-top: 4px; color: #94a3b8; font-size: 11px; }
 .neutral { color: #64748b; }
 .source-tag { display: inline-flex; padding: 5px 9px; border-radius: 999px; background: #eff6ff; color: #1d4ed8; font-size: 12px; font-weight: 700; }
 .empty { padding: 36px; text-align: center; color: #64748b; }
-
-.market-cards { display: none; gap: 13px; }
-.market-card { border: 1px solid #e2e8f0; border-radius: 17px; padding: 17px; background: white; box-shadow: 0 8px 28px rgba(15,23,42,.06); }
-.card-top { display: flex; justify-content: space-between; gap: 15px; align-items: start; }
-.card-top > div > strong, .card-top > div > small { display: block; }
-.card-top > div:first-child strong { margin-top: 4px; font-size: 20px; }
-.card-top small { margin-top: 3px; color: #94a3b8; font-size: 11px; }
-.card-top > div:last-child { text-align: right; }
-.card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 17px; }
-.card-grid div { padding: 11px; border-radius: 11px; background: #f8fafc; }
-.card-grid span, .card-grid strong { display: block; }
-.card-grid span { margin-bottom: 5px; color: #64748b; font-size: 11px; }
-.card-grid strong { font-size: 14px; }
-.card-footer { margin-top: 13px; color: #64748b; font-size: 12px; }
-.empty-card { padding: 28px; border: 1px dashed #cbd5e1; border-radius: 15px; text-align: center; color: #64748b; background: white; }
+.sparkline-cell { width: 112px; }
+.sparkline { display: block; width: 92px; height: 34px; }
+.sparkline path { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.sparkline-loading, .sparkline-empty { color: #94a3b8; font-size: 11px; }
+.sticky-rank { position: sticky; left: 0; z-index: 3; width: 48px; min-width: 48px; }
+.sticky-symbol { position: sticky; left: 48px; z-index: 3; min-width: 122px; box-shadow: 1px 0 0 #e2e8f0; }
+thead .sticky-rank, thead .sticky-symbol { z-index: 5; background: #f8fafc; }
+tbody tr:hover .sticky-rank, tbody tr:hover .sticky-symbol { background: #f8fafc; }
 
 footer { border-top: 1px solid #e2e8f0; background: white; }
 footer p { padding: 24px 20px; color: #64748b; font-size: 12px; line-height: 1.8; }
@@ -81,10 +67,13 @@ footer p { padding: 24px 20px; color: #64748b; font-size: 12px; line-height: 1.8
   .site-header { padding: 30px 16px 62px; }
   .header-inner { align-items: flex-start; flex-direction: column; }
   .status-box { width: 100%; }
-  .container { padding: 0 14px 38px; }
-  .controls { grid-template-columns: 1fr; margin-top: -34px; }
+  .container { padding: 0 0 38px; }
+  .controls { grid-template-columns: 1fr; margin: -34px 14px 0; }
   .refresh-button { min-height: 44px; }
-  .section-heading { align-items: flex-start; flex-direction: column; }
-  .table-wrap { display: none; }
-  .market-cards { display: grid; }
+  .section-heading { align-items: flex-start; flex-direction: column; padding: 0 14px; }
+  .table-wrap { border-left: 0; border-right: 0; border-radius: 0; }
+  table { min-width: 1060px; }
+  th, td { padding: 12px 11px; }
+  .sticky-rank { width: 42px; min-width: 42px; }
+  .sticky-symbol { left: 42px; min-width: 105px; }
 }

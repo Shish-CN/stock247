@@ -4,13 +4,14 @@ export default async function handler(request, response) {
   if (request.method !== "GET") return jsonResponse(response, 405, { ok: false, error: "method_not_allowed" });
   try {
     const url = new URL(request.url || "/api/markets", "https://stock247.local");
-    const limit = parseLimit(url.searchParams.get("limit"), 20, 100);
+    const limit = parseLimit(url.searchParams.get("limit"), 500, 500);
     const markets = await fetchTradeXyzMarkets();
     return jsonResponse(response, 200, {
       ok: true,
       source: "trade.xyz / Hyperliquid xyz dex",
       updatedAt: new Date().toISOString(),
       count: Math.min(limit, markets.length),
+      total: markets.length,
       items: markets.slice(0, limit)
     }, "s-maxage=10, stale-while-revalidate=60");
   } catch (error) {
