@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { normalizeSymbol, selectPrice, transformMarkets } from "../lib/hyperliquid.mjs";
+import { normalizeSymbol, selectPrice, transformCandlePoints, transformMarkets } from "../lib/hyperliquid.mjs";
 
 test("normalizes xyz symbols", () => {
   assert.equal(normalizeSymbol(" xyz:Aapl "), "AAPL");
@@ -24,4 +24,12 @@ test("transforms and sorts xyz market contexts", () => {
   assert.equal(markets[0].symbol, "NVDA");
   assert.equal(markets[1].symbol, "AAPL");
   assert.equal(markets[1].change24h, 10);
+});
+
+test("normalizes and downsamples candle points", () => {
+  const payload = Array.from({ length: 50 }, (_, index) => ({ t: String(index), c: String(index + 100) }));
+  const points = transformCandlePoints(payload, 10);
+  assert.equal(points.length, 10);
+  assert.deepEqual(points[0], { time: 0, close: 100 });
+  assert.deepEqual(points.at(-1), { time: 49, close: 149 });
 });
