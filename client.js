@@ -110,11 +110,11 @@ function render(fetchSparklines = true) {
   elements.tableBody.innerHTML = items.map((item, index) => `
     <tr>
       <td class="rank sticky-rank">${index + 1}</td>
-      <td class="sticky-symbol"><strong>${escapeHtml(item.symbol)}</strong><small>${escapeHtml(item.contractSymbol)}</small></td>
-      <td><strong>${formatPrice(item.price)}</strong><small>${item.tradingHours}</small></td>
+      <td class="sticky-symbol symbol-cell"><strong>${escapeHtml(item.symbol)}</strong><small>${escapeHtml(item.contractSymbol)}</small></td>
+      <td class="price-cell"><strong>${formatPrice(item.price)}</strong><small>${item.tradingHours}</small></td>
       <td class="sparkline-cell">${sparklineSvg(item)}</td>
-      <td class="${tone(item.changePercent24h)}"><strong>${formatSigned(item.changePercent24h, "%")}</strong><small>${formatSigned(item.change24h)}</small></td>
-      <td>${formatCompact(item.volume24h, true)}</td>
+      <td class="volume-cell">${formatCompact(item.volume24h, true)}</td>
+      <td class="change-cell ${tone(item.changePercent24h)}"><strong>${formatSigned(item.changePercent24h, "%")}</strong><small>${formatSigned(item.change24h)}</small></td>
       <td>${formatCompact(item.openInterest)}</td>
       <td>${item.funding == null ? "暂无" : `${(item.funding * 100).toFixed(5)}%`}</td>
       <td><span class="source-tag">${escapeHtml(item.priceSource || "暂无")}</span></td>
