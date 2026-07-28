@@ -71,9 +71,32 @@ footer p { padding: 24px 20px; color: #64748b; font-size: 12px; line-height: 1.8
   .controls { grid-template-columns: 1fr; margin: -34px 14px 0; }
   .refresh-button { min-height: 44px; }
   .section-heading { align-items: flex-start; flex-direction: column; padding: 0 14px; }
+  .section-heading p { font-size: 12px; line-height: 1.55; }
   .table-wrap { border-left: 0; border-right: 0; border-radius: 0; }
-  table { min-width: 1060px; }
-  th, td { padding: 12px 11px; }
-  .sticky-rank { width: 42px; min-width: 42px; }
-  .sticky-symbol { left: 42px; min-width: 105px; }
+  table { min-width: 780px; table-layout: fixed; }
+  th, td { padding: 10px 5px; font-size: 11px; }
+  th { letter-spacing: 0; }
+  td small { margin-top: 2px; font-size: 9px; }
+  .sticky-rank { display: none; }
+  .sticky-symbol { left: 0; min-width: 0; width: 68px; box-shadow: 1px 0 0 #e2e8f0; }
+  .symbol-cell { width: 68px; max-width: 68px; }
+  .symbol-cell strong { overflow: hidden; text-overflow: ellipsis; }
+  .symbol-cell small { display: none; }
+  .price-cell { width: 76px; max-width: 76px; }
+  .price-cell strong { font-size: 11px; }
+  .price-cell small { display: none; }
+  .sparkline-cell { width: 72px; max-width: 72px; }
+  .sparkline { width: 64px; height: 27px; }
+  .volume-cell { width: 86px; max-width: 86px; font-size: 10px; }
+  .change-cell { width: 76px; }
+  .source-tag { padding: 4px 6px; font-size: 10px; }
+}
+
+@media (max-width: 360px) {
+  th, td { padding-left: 4px; padding-right: 4px; }
+  .sticky-symbol, .symbol-cell { width: 62px; max-width: 62px; }
+  .price-cell { width: 70px; max-width: 70px; }
+  .sparkline-cell { width: 66px; max-width: 66px; }
+  .sparkline { width: 58px; }
+  .volume-cell { width: 78px; max-width: 78px; }
 }
